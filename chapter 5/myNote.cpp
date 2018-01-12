@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <ctime>
 using namespace std;
 
 int main()
@@ -121,11 +122,60 @@ int main()
     cin >> name;
     cout << "Here is your name:\n";
     i = 0;
-    while (name[i] != '\0')
+    while (name[i] != '\0') //可以这样修改: while(name[i])
     {
         cout << name[i] << ":" << int (name[i]) << endl;
         i++;
     }
+
+    /**
+     * for 与 while
+     * for (init-expression;test-expression;update-expression)
+     * {
+     *    statement(s)
+     * }
+     * 可以改写成这样:
+     * init-expression
+     * while(test-expression)
+     * {
+     *  statement(s);
+     *  pdate-expression
+     * }
+     * 由于for循环和while循环几乎是等效的，因此使用哪个知识风格上的问题，它们之间存在三个差别
+     * 1.for循环中省略了测试条件时，将任务条件问true
+     * 2.在for循环中，可以使用初始化语句声明一个局部变量，但在while中不能这样做
+     * 3.如果循环体中包括continue语句，情况将会不同
+     * 通常在无法遇险知道循环将执行的次数时，使用while循环
+    */
+
+    //利用clock()和头文件ctime来创建延迟循环
+    cout << "Enter the delay time,in seconds";
+    float secs;
+    cin >> secs;
+    clock_t delay = secs * CLOCKS_PER_SEC;
+    cout << "starting\a\n";
+    clock_t start = clock();
+    while (clock() - start < delay)
+        ;
+    cout << "done \a\n";
+
+    /** 类型别名
+    * C++为类型建立别名的方式有两种，一种是使用预处理器
+    * #define  BYTE char //preprocessor replaces BYTE with char
+    * 这样，预处理器在编译程序时使用char替换所有BYTE,从而使BYTE成为char的别名
+    * 第二种方式是使用C++关键字typedef来创建别名
+    * typedef char byte;
+    * typedef typeName aliasName;
+    * 要将byte_pointer成为char指针的别名，可将其声明为char指针，再在前面加上typedef:
+    * typedef char * byte_pointer;
+    * 也可以使用#define,但声明一系列变量时，这种方法不适用，例如:
+    * #define PLOAT_POINTER float *
+    * FLOAT_POINTER pa,pb;
+    * 预处理器置换将该声明转换为这样:
+    * float * pa,pb;
+    */
+    
+    
     return 0;
 }
 
