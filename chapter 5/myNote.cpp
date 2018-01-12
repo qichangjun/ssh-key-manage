@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstring>
 using namespace std;
 
 int main()
@@ -63,7 +64,7 @@ int main()
     for (i = word.size() - 1; i >= 0; i--)
         cout << word[i];
 
-    //递增／递减运算符和指针
+    // //递增／递减运算符和指针
     double arr[5] = {21.1,32.0,32.4,24.1,17.4};
     double * pt = arr; //pt point at arr[0];
     ++pt; //point at arr[1]
@@ -75,6 +76,56 @@ int main()
     pa[4] += 6; //18
     *(pa + 4) += 7; //pa[4] set to 25
     pa += 2; //pa point to pa[2]
+
+    //语句快中申明变量
+    int num = 20;  //original num
+    {
+        cout << num << endl; //original num
+        int num =100;       //new num
+        cout << num << endl; //use new num
+    }
+    cout << num <<endl; //original num
+
+    //将数组中的字符顺序反转
+    cout << "Enter a word";
+    cin >> word;
+    char temp;
+    int j;
+    for (i = 0,j = word.size() - 1; i < j; --j,++i) {
+        temp = word[i];
+        word[i] = word[j];
+        word[j] = temp;
+    }
+    cout << word << "\nDone\n";
+
+    //C++可以直接对字符进行++,以下可以遍历出A-Z字符
+    char ch;
+    for (ch = 'a';ch<='z';ch++)
+        cout << ch;
+
+    char compstrWords[5] = "?ate";
+    for (ch = 'a';strcmp(compstrWords,"mate");ch++)
+    {
+        cout << compstrWords << endl;
+        compstrWords[0] = ch;
+    }
+    cout << "word is " << compstrWords << endl;
+
+    //while循环
+    //while (test-condition)
+    //  body
+
+    const int ArSize = 20;
+    char name[ArSize];
+    cout << "Your first name,please";
+    cin >> name;
+    cout << "Here is your name:\n";
+    i = 0;
+    while (name[i] != '\0')
+    {
+        cout << name[i] << ":" << int (name[i]) << endl;
+        i++;
+    }
     return 0;
 }
 
