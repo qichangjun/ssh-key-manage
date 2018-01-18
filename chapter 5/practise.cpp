@@ -50,7 +50,48 @@ int main()
      *  有效，将y设置成1
     **/ 
 
-    
+    /** 编程题1
+     *  输入两个整数，计算出两整数之间的所有整数的合，包括这两个数自己
+    **/ 
+    // int i,j,k;
+    // cout << "输入第一个整数:";
+    // cin >> i;
+    // cout << "输入第二个整数";
+    // cin >> j;
+    // int sum = 0;
+    // for (k = i; k <= j; k++){        
+    //     sum += k;
+    // }
+    // cout << "两值之间所有整数合为:" << sum << endl;
+
+    /** 编程题3
+     *  计算每次用户输入的所有数的总和，以0结束
+     **/ 
+    // sum = 0;
+    // do {
+    //     cout << "输入一个整数,0为结束:";
+    //     cin >> i;
+    //     sum += i;
+    //     cout << "合为:" << sum << endl;
+    // }        
+    // while (i != 0);
+
+    /** 编程题4
+     * 
+     **/
+    double Daphne = 100;
+    double Cleo = 100; 
+    int i = 1;
+    do {
+        Daphne += 0.10 * 100;
+        Cleo += Cleo * 0.050;
+        cout << "第" << i << "年的投资价值为:" << endl;
+        cout << "Daphne:" << Daphne <<endl;
+        cout << "Cleo:" << Cleo <<endl;
+        i++;
+    }
+    while(Daphne > Cleo);
+    cout << "第" << i - 1 << "年,Cleo将超过Daphne";
     return 0;
 }
 
